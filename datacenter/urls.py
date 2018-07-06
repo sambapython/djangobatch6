@@ -21,11 +21,12 @@ def fun(request):
 	#return "hello wrold"
 	return HttpResponse("25.67")
 '''
-from cooling.views import fun, fun1
+from cooling.views import fun, fun1, fun2
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
      url(r'^get_temp/', fun),
      url(r'^gotohtml/', fun1),
+     url(r'^gototemplate/', fun2),
 
      
 ]

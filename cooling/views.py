@@ -65,4 +65,5 @@ def fun1(request):
 	"""
 	return HttpResponse(resp)
 def fun2(request):
-	return "sdf"
+	#return render(request,"index.html")
+	return render(request,"cooling/index.html")
