@@ -64,3 +64,5 @@ def fun1(request):
 </html>
 	"""
 	return HttpResponse(resp)
+def fun2(request):
+	return "sdf"
