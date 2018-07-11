@@ -1,0 +1,7 @@
+django-admin startproject <projectname>
+
+# the above command creates project(manage.py, folder with projectname(settings.py, urls.py, wsgi.py))
+
+python manage.py startapp sales
+
+python manage.py runserver

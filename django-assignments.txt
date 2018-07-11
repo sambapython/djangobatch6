@@ -1,0 +1,12 @@
+1. create a project DataCenter, create an app cooling.
+
+in the browser if i send: http://127.0.0.1:8000/get_temp/   
+
+the response of the above url is : 27.56. This response should show in the browser.
+
+2. create a form to take the details of a person for institure course.
+3. need to show the form created above(2nd assignment) for the url: http://127.0.0.1:8000/create_person/
+4. create project called ERP
+5. Create atleast 5 different apps. Each app contains atleast two models.
+ do makemigrations and migrate to DB. out of 2  models  one model should contains your own primarykey. 
+    

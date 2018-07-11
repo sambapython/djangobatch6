@@ -1,0 +1,7 @@
+git init
+git add .
+git config --global user.email "your email address"
+git config --global user.name "your username"
+git commit -m "hello world django project"
+git remote add origin https://github.com/sambapython/djangobatch6.git
+git push -u origin master
