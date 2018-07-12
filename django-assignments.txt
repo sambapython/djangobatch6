@@ -9,4 +9,10 @@ the response of the above url is : 27.56. This response should show in the brows
 4. create project called ERP
 5. Create atleast 5 different apps. Each app contains atleast two models.
  do makemigrations and migrate to DB. out of 2  models  one model should contains your own primarykey. 
-    
+6. Create atleast 5 different apps. Each app contains atleast two models.
+ do makemigrations and migrate to DB. out of 2  models  one model should contains your own primarykey. 
+Add foreignkey and manytomany relations among the app models. 
+And create atleast five records for each model using shell tool.
+7. Add atleast one foreignkey and one manytomanyfield in each app of the assignment6
+    insert atleast 15 records for each model. And write a code in shell to grep the details from 
+   each table of all apps
