@@ -1,0 +1,225 @@
+In [1]: from app1.models import Prodict
+---------------------------------------------------------------------------
+ImportError                               Traceback (most recent call last)
+<ipython-input-1-0808ae6bcc6a> in <module>()
+----> 1 from app1.models import Prodict
+
+ImportError: cannot import name Prodict
+
+In [2]: from app1.models import Product
+
+In [3]: laptop = Product(name="lenovo series1", cost=40000)
+
+In [4]: laptop.save()
+
+In [5]: laptop1 = Product(name="lenovo series2", cost=41000)
+
+In [6]: laptop1.save()
+
+In [7]: from app1.models import SalesOrder
+
+In [8]: from app1.models import Customer
+
+In [9]: cust1 = Customer(name="cust1", address="maithrivanam")
+
+In [10]: sales1 = SalesOrder(name="order1",customer=cust1,sal_type='cod')
+
+In [11]: sales1.save()
+---------------------------------------------------------------------------
+ValueError                                Traceback (most recent call last)
+<ipython-input-11-c58e560d9ec3> in <module>()
+----> 1 sales1.save()
+
+C:\Python27\lib\site-packages\django\db\models\base.pyc in save(self, force_insert, force_update, using, update_fields)
+    760                     raise ValueError(
+    761                         "save() prohibited to prevent data loss due to "
+--> 762                         "unsaved related object '%s'." % field.name
+    763                     )
+    764
+
+ValueError: save() prohibited to prevent data loss due to unsaved related object 'customer'.
+
+In [12]: cust1.save()
+
+In [13]: sales1 = SalesOrder(name="order1",customer=cust1,sal_type='cod')
+
+In [14]: sales1.save()
+
+In [15]: sales1.add(laptop)
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-15-e2c1b2904b2b> in <module>()
+----> 1 sales1.add(laptop)
+
+AttributeError: 'SalesOrder' object has no attribute 'add'
+
+In [16]: sales1.product.add(laptop)
+
+In [17]: sales1.product.add(laptop1)
+
+In [18]: laptop3=Product(name="apple laptop", cost=90000)
+
+In [19]: laptop3.save()
+
+In [20]: cust2 = Customer(name="cust2", address="sanathnagar")
+
+In [21]: cust2.save()
+
+In [22]: sales2=SalesOrder(name="order2",customer=cust2, sal_type="online")
+
+In [23]: sales2.save()
+
+In [24]: sales2.product.add(laptop3)
+
+In [25]: Product.objects.all()
+Out[25]: <QuerySet [<Product: Product object>, <Product: Product object>, <Product: Product object>]>
+
+In [26]: products = Product.objects.all()
+
+In [27]: for product in products:
+    ...:     print product
+    ...:
+Product object
+Product object
+Product object
+
+In [28]: for product in products:
+    ...:     print product
+    ...:     print product.name, product.cost, product.id
+    ...:
+Product object
+lenovo series1 40000 1
+Product object
+lenovo series2 41000 2
+Product object
+apple laptop 90000 3
+
+In [29]: customers = Customer.objects.all()
+
+In [30]: for customer in customersL
+  File "<ipython-input-30-af52ed78234c>", line 1
+    for customer in customersL
+                              ^
+SyntaxError: invalid syntax
+
+
+In [31]: for customer in customers:
+    ...:     print customer.name, customer.address, customer.id
+    ...:
+cust1 maithrivanam 1
+cust2 sanathnagar 2
+
+In [32]: salersorders=SalesOrder.objects.all()
+
+In [33]: for saleorder in salersorders:
+    ...:     print saleorder.name, saleorder.product, saleorder.customer, saleorder.sal_type
+    ...:
+order1 app1.Product.None Customer object cod
+order2 app1.Product.None Customer object online
+
+In [34]: saleorder.get_sal_type_display()
+Out[34]: u'Online payment'
+
+In [35]: for saleorder in salersorders:
+    ...:     print saleorder.name, saleorder.product.all(), saleorder.customer.name, saleorder.get_sal_type_display()
+    ...:
+order1 <QuerySet [<Product: Product object>, <Product: Product object>]> cust1 CASH ON DELIVERY
+order2 <QuerySet [<Product: Product object>]> cust2 Online payment
+
+In [36]: for saleorder in salersorders:
+    ...:     print saleorder.name, saleorder.product.all(), saleorder.customer.name, saleorder.get_sal_type_displa(
+    ...: )
+    ...:     for product in saleorder.product.all():
+    ...:         print product
+    ...:
+order1 <QuerySet [<Product: Product object>, <Product: Product object>]> cust1---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+<ipython-input-36-a1fe4c3164eb> in <module>()
+      1 for saleorder in salersorders:
+----> 2     print saleorder.name, saleorder.product.all(), saleorder.customer.name, saleorder.get_sal_type_displa()
+      3     for product in saleorder.product.all():
+      4         print product
+      5
+
+AttributeError: 'SalesOrder' object has no attribute 'get_sal_type_displa'
+
+In [37]: for saleorder in salersorders:
+    ...:     print saleorder.name, saleorder.product.all(), saleorder.customer.name, saleorder.get_sal_type_display
+    ...: ()
+    ...:     for product in saleorder.product.all():
+    ...:         print product
+    ...:
+ order1 <QuerySet [<Product: Product object>, <Product: Product object>]> cust1 CASH ON DELIVERY
+Product object
+Product object
+order2 <QuerySet [<Product: Product object>]> cust2 Online payment
+Product object
+
+In [38]: for saleorder in salersorders:
+    ...:     print saleorder.name, saleorder.product.all(), saleorder.customer.name, saleorder.get_sal_type_display
+    ...: ()
+    ...:     for product in saleorder.product.all():
+    ...:         print product.name, product.cost
+    ...:
+    ...:
+order1 <QuerySet [<Product: Product object>, <Product: Product object>]> cust1 CASH ON DELIVERY
+lenovo series1 40000
+lenovo series2 41000
+order2 <QuerySet [<Product: Product object>]> cust2 Online payment
+apple laptop 90000
+
+In [39]:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
