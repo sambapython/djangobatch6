@@ -16,3 +16,6 @@ And create atleast five records for each model using shell tool.
 7. Add atleast one foreignkey and one manytomanyfield in each app of the assignment6
     insert atleast 15 records for each model. And write a code in shell to grep the details from 
    each table of all apps
+8. develop the study space application.
+9. develop a basic html page with maximum tags in html, use inlilne, internal, external
+    style concept in this page.
