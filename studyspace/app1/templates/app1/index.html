@@ -15,7 +15,7 @@
   <p>This is for studay space</p>
 
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="/studyhalls/">Studay Hall</a></li>
+    <li class="active"><a data-toggle="tab" href="#menu1">Studay Hall</a></li>
     <li><a data-toggle="tab" href="#menu2">Enquiry</a></li>
     <li><a data-toggle="tab" href="#menu3">Expenses</a></li>
   </ul>
@@ -24,15 +24,26 @@
     <div id="menu1" class="tab-pane fade">
       <h3>STUDY HALLS</h3>
       <p>this page showing study halls</p>
-      <p>{{studyhalls}}</p>
+      <!-- <p>{{halls}}</p> -->
+      {% for hall in halls%}
+        <p>{{ hall.name }},{{hall.area}}</p>
+      {% endfor %}
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>ENQUIRIES</h3>
       <p>this page is for enquiries</p>
+      {% for enq in enqs%}
+      <p>{{ en1.name}}{{ enq.course }}{{ enq.student}}</p>
+      {% endfor%}
+      <!-- <p> {{ enqs }}</p> -->
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>EXPENSES</h3>
       <p>This page is for expenses</p>
+      <!-- <p>{{exps}}</p> -->
+      {% for exp in exps%}
+        <p>{{ exp.studyhall }},{{ exp.date}},{{ exp.name}},{{exp.desc}},{{exp.value}}</p>
+      {% endfor %}
     </div>
   </div>
 </div>
