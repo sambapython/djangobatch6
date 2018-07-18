@@ -6,6 +6,11 @@ from app1.models import StudyHall, Expenses, Enquiry
 
 # Create your views here.
 def view_index(request):
+	if request.method=="POST":
+		data = request.POST
+		hall = StudyHall(name=data.get("hall_name"), 
+			area=data.get("hall_area"))
+		hall.save()
 	studyhalls = StudyHall.objects.all()
 	expenses = Expenses.objects.all()
 	enquiries = Enquiry.objects.all()

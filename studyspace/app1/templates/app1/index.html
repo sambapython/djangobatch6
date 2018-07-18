@@ -25,9 +25,31 @@
       <h3>STUDY HALLS</h3>
       <p>this page showing study halls</p>
       <!-- <p>{{halls}}</p> -->
-      {% for hall in halls%}
-        <p>{{ hall.name }},{{hall.area}}</p>
-      {% endfor %}
+      <div class="row">
+        <form method="post">
+          {% csrf_token %}
+          Hall name:<input type="text" name="hall_name">
+          Hall area:<input type="text" name="hall_area">
+          <input type="submit" name="" value="CREATE HALL">
+        </form>
+      </div>
+
+      <div class="table-responsive">
+        <!-- <a href="">CREAT STUDYHALL</a> -->
+        <table class="table table-hover">
+        <tr><th>NAME</th><th>AREA</th></tr>
+        {% for hall in halls%}
+        <tr>
+          <td>{{ hall.name }}</td>
+          <td>{{ hall.area }}</td>
+        </tr>
+       <!--  <p>{{ hall.name }},{{hall.area}}</p> -->
+        {% endfor %}
+      </table>
+        
+      </div>
+      
+      
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>ENQUIRIES</h3>
