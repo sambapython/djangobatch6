@@ -5,8 +5,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.3.1.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('#studyhall').DataTable();
+} );
+</script>
 </head>
 <body>
 
@@ -26,46 +36,108 @@
       <p>this page showing study halls</p>
       <!-- <p>{{halls}}</p> -->
       <div class="row">
-        <form method="post">
+        <form method="post" >
           {% csrf_token %}
           Hall name:<input type="text" name="hall_name">
           Hall area:<input type="text" name="hall_area">
-          <input type="submit" name="" value="CREATE HALL">
+          <input type="submit" name="studyhall" value="CREATE HALL">
         </form>
       </div>
 
       <div class="table-responsive">
         <!-- <a href="">CREAT STUDYHALL</a> -->
-        <table class="table table-hover">
-        <tr><th>NAME</th><th>AREA</th></tr>
-        {% for hall in halls%}
-        <tr>
-          <td>{{ hall.name }}</td>
-          <td>{{ hall.area }}</td>
-        </tr>
-       <!--  <p>{{ hall.name }},{{hall.area}}</p> -->
-        {% endfor %}
+        <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr><th>NAME</th><th>AREA</th></tr>
+          </thead>
+          <tbody>
+              {% for hall in halls%}
+              <tr>
+                <td>{{ hall.name }}</td>
+                <td>{{ hall.area }}</td>
+              </tr>
+             <!--  <p>{{ hall.name }},{{hall.area}}</p> -->
+              {% endfor %}
+          </tbody>
       </table>
-        
       </div>
-      
-      
     </div>
     <div id="menu2" class="tab-pane fade">
       <h3>ENQUIRIES</h3>
       <p>this page is for enquiries</p>
-      {% for enq in enqs%}
-      <p>{{ en1.name}}{{ enq.course }}{{ enq.student}}</p>
-      {% endfor%}
+      <form method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="enq_name">
+        course:<select name="enq_course">
+          {% for cour in courses%}
+            <option value="{{ cour.id }}">{{ cour.name}}</option>
+          {% endfor %}
+        </select>
+        student:<select name="enq_student">
+          {% for stu in students%}
+            <option value="{{ stu.id }}">{{ stu.name}}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" name="enquiry" value="CreateEnquiry">
+      </form>
+      <div class="table-responsive">
+      <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>NAME</th><th>COURSE</th><th>Student</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for enq in enqs%}
+          <tr>
+            <td>{{ enq.name}}</td>
+            <td>{{ enq.course}}</td>
+            <td>{{ enq.student}}</td>
+          </tr>
+          <!-- <p>{{ en1.name}}{{ enq.course }}{{ enq.student}}</p> -->
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
       <!-- <p> {{ enqs }}</p> -->
     </div>
     <div id="menu3" class="tab-pane fade">
       <h3>EXPENSES</h3>
       <p>This page is for expenses</p>
+      <form method="post">
+        {% csrf_token %}
+        studyhall:<select name="exp_studyhall">
+          {% for hall in halls%}
+          <option value="{{ hall.id }}">{{hall.name}}</option>
+          {% endfor %}}
+        </select>
+        Date:<input type="text" name="exp_date">
+        name:<input type="text" name="exp_name">
+        desc:<input type="text" name="exp_desc">
+        value:<input type="text" name="exp_value">
+        <input type="submit" name="expense" value="CREATE EXPENSE">
+      </form>
+      <div class="table-responsive">
+      <table class="table table-hover">
+        <tr><th>StudyHall</th>
+            <th>date</th>
+            <th>name</th>
+            <th>desc</th>
+            <th>value</th>
+        </tr>
       <!-- <p>{{exps}}</p> -->
-      {% for exp in exps%}
-        <p>{{ exp.studyhall }},{{ exp.date}},{{ exp.name}},{{exp.desc}},{{exp.value}}</p>
-      {% endfor %}
+        {% for exp in exps%}
+        <tr>
+          <td>{{ exp.studyhall }}</td>
+          <td>{{ exp.date }}</td>
+          <td>{{ exp.name }}</td>
+          <td>{{ exp.desc }}</td>
+          <td>{{ exp.value }}</td>
+        </tr>
+          <!-- <p>{{ exp.studyhall }},{{ exp.date}},{{ exp.name}},{{exp.desc}},{{exp.value}}</p> -->
+        {% endfor %}
+      </table>
+    </div>
     </div>
   </div>
 </div>
