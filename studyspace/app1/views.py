@@ -2,50 +2,45 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render, redirect
-from app1.models import StudyHall, Expenses, Enquiry, Course, Student, Expenses
+from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
+ Expenses, UserProfile
+from django.contrib.auth import authenticate
 
 # Create your views here.
 def view_index(request):
+
 	if request.method=="POST":
 		data = request.POST
-		if data.get("enquiry"):
-			course_inst = Course.objects.get(pk=data.get("enq_course"))
-			stdudent_inst = Student.objects.get(pk=data.get("enq_student"))
-			enq = Enquiry(
-				name = data.get("enq_name"),
-				student = stdudent_inst,
-				course = course_inst
+
+		if data.get("reg"):
+			up = UserProfile.objects.create_user(
+				username=data.get("username"),
+				password=data.get("password"),
+				email = data.get("email")
 				)
-			enq.save()
-		elif data.get("expense"):
-			studyhall_inst = StudyHall.objects.get(pk=data.get("exp_studyhall"))
-			exp = Expenses(
-				studyhall = studyhall_inst,
-				date = data.get("exp_date"),
-				name = data.get("exp_name"),
-				desc = data.get("exp_desc"),
-				value = data.get("exp_value"),
-				)
-			exp.save()
+			return render(request,"app1/index.html",
+				{"msg":"USER created successfully!!. Please login"})
 		else:
-			hall = StudyHall(name=data.get("hall_name"), 
-				area=data.get("hall_area"))
-			hall.save()
-	studyhalls = StudyHall.objects.all()
-	expenses = Expenses.objects.all()
-	enquiries = Enquiry.objects.all()
-	courses = Course.objects.all()
-	students = Student.objects.all()
-	return render(request,"app1/index.html",{
-		"halls": studyhalls,
-		"exps": expenses,
-		"enqs": enquiries,
-		"students": students,
-		"courses": courses 
-		})
+			user = authenticate(
+				username=data.get("username"),
+				password=data.get("password")
+				)
+			if user:
+				return render(request,"app1/home.html",
+					{"msg":"Login success"})
+			else:
+				return render(request,"app1/index.html",
+					{"msg": "Login failed."})
+
+	return render(request,"app1/index.html")
 def view_syudyhalls(request):
+	if request.method=="POST":
+		data = request.POST
+		hall = StudyHall(name=data.get("hall_name"), 
+				area=data.get("hall_area"))
+		hall.save()
 	studyhalls = StudyHall.objects.all()
-	return render(request,"app1/index.html",{"studyhalls":studyhalls})
+	return render(request,"app1/studyhall.html",{"halls":studyhalls})
 def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
 	if request.method=="POST":
@@ -53,7 +48,7 @@ def view_hall_update(request,pk):
 		hall.name=data.get("name1")
 		hall.area=data.get("area1")
 		hall.save()
-		return redirect(view_index)
+		return redirect(view_syudyhalls)
 
 	return render(request,"app1/hall_update.html",{"data":hall})
 
@@ -61,5 +56,7 @@ def view_hall_delete(request, hall_id):
 	hall_info = StudyHall.objects.get(pk=hall_id)
 	if request.method=="POST":
 		hall_info.delete()
-		return redirect(view_index)
+		return redirect(view_syudyhalls)
 	return render(request,"app1/hall_delete.html",{"hall":hall_info})
+def view_reports(request):
+	pass

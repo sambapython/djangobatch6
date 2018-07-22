@@ -1,0 +1,89 @@
+
+
+  <div class="tab-content">
+    <div id="menu1" class="tab-pane fade">
+      
+      </div>
+    </div>
+    <div id="menu2" class="tab-pane fade">
+      <h3>ENQUIRIES</h3>
+      <p>this page is for enquiries</p>
+      <form method="post">
+        {% csrf_token %}
+        Name: <input type="text" name="enq_name">
+        course:<select name="enq_course">
+          {% for cour in courses%}
+            <option value="{{ cour.id }}">{{ cour.name}}</option>
+          {% endfor %}
+        </select>
+        student:<select name="enq_student">
+          {% for stu in students%}
+            <option value="{{ stu.id }}">{{ stu.name}}</option>
+          {% endfor %}
+        </select>
+        <input type="submit" name="enquiry" value="CreateEnquiry">
+      </form>
+      <div class="table-responsive">
+      <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+          <tr>
+            <th>NAME</th><th>COURSE</th><th>Student</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for enq in enqs%}
+          <tr>
+            <td>{{ enq.name}}</td>
+            <td>{{ enq.course}}</td>
+            <td>{{ enq.student}}</td>
+          </tr>
+          <!-- <p>{{ en1.name}}{{ enq.course }}{{ enq.student}}</p> -->
+          {% endfor%}
+        </tbody>
+      </table>
+    </div>
+      <!-- <p> {{ enqs }}</p> -->
+    </div>
+    <div id="menu3" class="tab-pane fade">
+      <h3>EXPENSES</h3>
+      <p>This page is for expenses</p>
+      <form method="post">
+        {% csrf_token %}
+        studyhall:<select name="exp_studyhall">
+          {% for hall in halls%}
+          <option value="{{ hall.id }}">{{hall.name}}</option>
+          {% endfor %}}
+        </select>
+        Date:<input type="text" name="exp_date">
+        name:<input type="text" name="exp_name">
+        desc:<input type="text" name="exp_desc">
+        value:<input type="text" name="exp_value">
+        <input type="submit" name="expense" value="CREATE EXPENSE">
+      </form>
+      <div class="table-responsive">
+      <table class="table table-hover">
+        <tr><th>StudyHall</th>
+            <th>date</th>
+            <th>name</th>
+            <th>desc</th>
+            <th>value</th>
+        </tr>
+      <!-- <p>{{exps}}</p> -->
+        {% for exp in exps%}
+        <tr>
+          <td>{{ exp.studyhall }}</td>
+          <td>{{ exp.date }}</td>
+          <td>{{ exp.name }}</td>
+          <td>{{ exp.desc }}</td>
+          <td>{{ exp.value }}</td>
+        </tr>
+          <!-- <p>{{ exp.studyhall }},{{ exp.date}},{{ exp.name}},{{exp.desc}},{{exp.value}}</p> -->
+        {% endfor %}
+      </table>
+    </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

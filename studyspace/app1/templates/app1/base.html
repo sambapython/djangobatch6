@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
- {% block header %}
 <head>
   <title>Study Space</title>
   <meta charset="utf-8">
@@ -21,15 +20,33 @@
 </script>
 </head>
 <body>
-
 <div class="container">
   <h2>STUDY SPACE</h2>
   <p>This is for studay space</p>
-
+  {% block menu %}
   <ul class="nav nav-tabs">
-    <li class="active"><a data-toggle="tab" href="#menu1">Studay Hall</a></li>
-    <li><a data-toggle="tab" href="#menu2">Enquiry</a></li>
-    <li><a data-toggle="tab" href="#menu3">Expenses</a></li>
+    <li><a href="/studyhalls/">Studay Hall</a></li>
+    <li><a href="#menu2">Enquiry</a></li>
+    <li><a >Expenses</a></li>
+    <li><a href="/reports/">REPORTS</a></li>
   </ul>
   {% endblock %}
-  {% block %}
+  <h4 style="color: red">
+    {% block pageheader%}
+      PAGE HEADER
+    {% endblock %}
+  </h4>
+  <div class="border border-success">
+    {% block content%}
+  <p> this is base template</p>
+  {% endblock %}
+  </div>
+  
+   <footer>
+    <p>Posted by: Hege Refsnes</p>
+    <p>Contact information: <a href="mailto:someone@example.com">
+    someone@example.com</a>.</p>
+  </footer> 
+</div>
+</body>
+</html>

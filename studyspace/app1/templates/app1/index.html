@@ -1,118 +1,72 @@
-
-
-  <div class="tab-content">
-    <div id="menu1" class="tab-pane fade">
-      <h3>STUDY HALLS</h3>
-      <p>this page showing study halls</p>
-      <!-- <p>{{halls}}</p> -->
-      <div class="row">
-        <form method="post" >
-          {% csrf_token %}
-          Hall name:<input type="text" name="hall_name">
-          Hall area:<input type="text" name="hall_area">
-          <input type="submit" name="studyhall" value="CREATE HALL">
-        </form>
+{% extends 'app1/base.html'%}
+{% block menu%}
+{% endblock %}
+{% block pageheader%}
+{% endblock %}
+{% block content%}
+<div class="row">
+  <div class="col-sm-6">
+    <p>LOGIN SCREEN</p>
+    <form class="form-horizontal" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">USername:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" id="email" placeholder="User name" name="username">
+        </div>
       </div>
-
-      <div class="table-responsive">
-        <!-- <a href="">CREAT STUDYHALL</a> -->
-        <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
-          <thead>
-            <tr><th>NAME</th><th>AREA</th><th>update</th><th>delete</th></tr>
-          </thead>
-          <tbody>
-              {% for hall in halls%}
-              <tr>
-                <td>{{ hall.name }}</td>
-                <td>{{ hall.area }}</td>
-                <td><a href="/hall_update/{{hall.id}}/">UPDATE</a></td>
-                <td><a href="/hall_delete/{{hall.id}}/">DELETE</a></td>
-              </tr>
-             <!--  <p>{{ hall.name }},{{hall.area}}</p> -->
-              {% endfor %}
-          </tbody>
-      </table>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Password:</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+        </div>
       </div>
-    </div>
-    <div id="menu2" class="tab-pane fade">
-      <h3>ENQUIRIES</h3>
-      <p>this page is for enquiries</p>
-      <form method="post">
-        {% csrf_token %}
-        Name: <input type="text" name="enq_name">
-        course:<select name="enq_course">
-          {% for cour in courses%}
-            <option value="{{ cour.id }}">{{ cour.name}}</option>
-          {% endfor %}
-        </select>
-        student:<select name="enq_student">
-          {% for stu in students%}
-            <option value="{{ stu.id }}">{{ stu.name}}</option>
-          {% endfor %}
-        </select>
-        <input type="submit" name="enquiry" value="CreateEnquiry">
-      </form>
-      <div class="table-responsive">
-      <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
-        <thead>
-          <tr>
-            <th>NAME</th><th>COURSE</th><th>Student</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for enq in enqs%}
-          <tr>
-            <td>{{ enq.name}}</td>
-            <td>{{ enq.course}}</td>
-            <td>{{ enq.student}}</td>
-          </tr>
-          <!-- <p>{{ en1.name}}{{ enq.course }}{{ enq.student}}</p> -->
-          {% endfor%}
-        </tbody>
-      </table>
-    </div>
-      <!-- <p> {{ enqs }}</p> -->
-    </div>
-    <div id="menu3" class="tab-pane fade">
-      <h3>EXPENSES</h3>
-      <p>This page is for expenses</p>
-      <form method="post">
-        {% csrf_token %}
-        studyhall:<select name="exp_studyhall">
-          {% for hall in halls%}
-          <option value="{{ hall.id }}">{{hall.name}}</option>
-          {% endfor %}}
-        </select>
-        Date:<input type="text" name="exp_date">
-        name:<input type="text" name="exp_name">
-        desc:<input type="text" name="exp_desc">
-        value:<input type="text" name="exp_value">
-        <input type="submit" name="expense" value="CREATE EXPENSE">
-      </form>
-      <div class="table-responsive">
-      <table class="table table-hover">
-        <tr><th>StudyHall</th>
-            <th>date</th>
-            <th>name</th>
-            <th>desc</th>
-            <th>value</th>
-        </tr>
-      <!-- <p>{{exps}}</p> -->
-        {% for exp in exps%}
-        <tr>
-          <td>{{ exp.studyhall }}</td>
-          <td>{{ exp.date }}</td>
-          <td>{{ exp.name }}</td>
-          <td>{{ exp.desc }}</td>
-          <td>{{ exp.value }}</td>
-        </tr>
-          <!-- <p>{{ exp.studyhall }},{{ exp.date}},{{ exp.name}},{{exp.desc}},{{exp.value}}</p> -->
-        {% endfor %}
-      </table>
-    </div>
-    </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input type="submit" name= "login" class="btn btn-default" value="LOGIN">
+        </div>
+      </div>
+    </form> 
   </div>
+  <div class="col-sm-6">
+    <p class="success">{{ msg }}</p>
+    <p>REgistration screen</p>
+    <form class="form-horizontal" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Email:</label>
+        <div class="col-sm-10">
+          <input type="email" class="form-control" id="email" placeholder="Enter email" name="email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="email">Username:</label>
+        <div class="col-sm-10">
+          <input type="text" class="form-control" placeholder="Enter email" name="username">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label col-sm-2" for="pwd">Password:</label>
+        <div class="col-sm-10">
+          <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+        </div>
+      </div>
+      
+      <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+          <input name="reg" type="submit" class="btn btn-default" value="REGISTER">
+        </div>
+      </div>
+    </form> 
+  </div>
+  
 </div>
-
-</body>
-</html>
+ 
+{% endblock %}

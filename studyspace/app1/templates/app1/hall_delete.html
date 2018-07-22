@@ -1,3 +1,9 @@
+{% extends "app1/base.html"%}
+{% block pageheader %}
+Deleting studyhall {{ hall.name }}
+{% endblock %}
+{% block content%}
+
 <form method="post">
 	{%csrf_token%}
 	hall name:<input type="text" value="{{hall.name}}">
@@ -5,3 +11,4 @@
 	<input type="submit" name="" value="DELTE HALL">
 	
 </form>
+{% endblock %}
