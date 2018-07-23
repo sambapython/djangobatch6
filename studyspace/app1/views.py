@@ -4,7 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, redirect
 from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
-from django.contrib.auth import authenticate
+from django.contrib.auth import authenticate, login, logout
 
 # Create your views here.
 def view_index(request):
@@ -26,6 +26,8 @@ def view_index(request):
 				password=data.get("password")
 				)
 			if user:
+				#request.session.update({"user":user.username})
+				login(request, user)
 				return render(request,"app1/home.html",
 					{"msg":"Login success"})
 			else:
@@ -34,13 +36,16 @@ def view_index(request):
 
 	return render(request,"app1/index.html")
 def view_syudyhalls(request):
-	if request.method=="POST":
-		data = request.POST
-		hall = StudyHall(name=data.get("hall_name"), 
-				area=data.get("hall_area"))
-		hall.save()
-	studyhalls = StudyHall.objects.all()
-	return render(request,"app1/studyhall.html",{"halls":studyhalls})
+	if "user" in request.session:
+		if request.method=="POST":
+			data = request.POST
+			hall = StudyHall(name=data.get("hall_name"), 
+					area=data.get("hall_area"))
+			hall.save()
+		studyhalls = StudyHall.objects.all()
+		return render(request,"app1/studyhall.html",{"halls":studyhalls})
+	else:
+		return redirect(view_index)
 def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
 	if request.method=="POST":
@@ -59,4 +64,12 @@ def view_hall_delete(request, hall_id):
 		return redirect(view_syudyhalls)
 	return render(request,"app1/hall_delete.html",{"hall":hall_info})
 def view_reports(request):
+	pass
+def view_logout(request):
+	if request.method=="POST":
+		#request.session.clear()
+		logout(request)
+		return redirect(view_index)
+	return render(request,"app1/logout.html")
+def view_forgotpassword(request):
 	pass
