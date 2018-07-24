@@ -35,8 +35,17 @@ def view_index(request):
 					{"msg": "Login failed."})
 
 	return render(request,"app1/index.html")
+
+def login_req(f, *args1):
+	def inner(*args):
+		if "_auth_user_id" in args[0].session:
+			return f(*args)
+		else:
+			return redirect(view_index)
+	return inner
+
+@login_req
 def view_syudyhalls(request):
-	if "user" in request.session:
 		if request.method=="POST":
 			data = request.POST
 			hall = StudyHall(name=data.get("hall_name"), 
@@ -44,8 +53,6 @@ def view_syudyhalls(request):
 			hall.save()
 		studyhalls = StudyHall.objects.all()
 		return render(request,"app1/studyhall.html",{"halls":studyhalls})
-	else:
-		return redirect(view_index)
 def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
 	if request.method=="POST":

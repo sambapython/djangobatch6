@@ -7,11 +7,31 @@ STUDY HALLS
       <p>this page showing study halls</p>
       <!-- <p>{{halls}}</p> -->
       <div class="row">
-        <form method="post" >
+        <form class="form-horizontal" method="post" >
           {% csrf_token %}
-          Hall name:<input type="text" name="hall_name">
-          Hall area:<input type="text" name="hall_area">
-          <input type="submit" name="studyhall" value="CREATE HALL">
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="hall_name">Hall name:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="hall_name" placeholder="Enter hall name" name="hall_name">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="hall_area">Hall area:</label>
+            <div class="col-sm-10">
+              <input type="text" class="form-control" id="hall_area" placeholder="Enter hall area" name="hall_area">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="hall_pic">Hall pic:</label>
+            <div class="col-sm-10">
+              <input type="file" class="form-control" id="hall_pic"  name="hall_pic">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" name= "studyhall" class="btn btn-default" value="CREATE HALL">
+            </div>
+          </div>
         </form>
       </div>
 
