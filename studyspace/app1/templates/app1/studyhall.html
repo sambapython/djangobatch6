@@ -7,7 +7,7 @@ STUDY HALLS
       <p>this page showing study halls</p>
       <!-- <p>{{halls}}</p> -->
       <div class="row">
-        <form class="form-horizontal" method="post" >
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
           {% csrf_token %}
           <div class="form-group">
             <label class="control-label col-sm-2" for="hall_name">Hall name:</label>
@@ -39,15 +39,17 @@ STUDY HALLS
         <!-- <a href="">CREAT STUDYHALL</a> -->
         <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
           <thead>
-            <tr><th>NAME</th><th>AREA</th><th>update</th><th>delete</th></tr>
+            <tr><th>NAME</th><th>AREA</th><th>PIC</th><th>update</th><th>delete</th></tr>
           </thead>
           <tbody>
               {% for hall in halls%}
               <tr>
                 <td>{{ hall.name }}</td>
                 <td>{{ hall.area }}</td>
+                <td><img src="/media/{{hall.hall_pic}}" alt="{{hall.hall_pic}}" width="50" height="50"></td>
                 <td><a href="/hall_update/{{hall.id}}/">UPDATE</a></td>
                 <td><a href="/hall_delete/{{hall.id}}/">DELETE</a></td>
+                
               </tr>
              <!--  <p>{{ hall.name }},{{hall.area}}</p> -->
               {% endfor %}

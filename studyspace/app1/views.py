@@ -5,6 +5,8 @@ from django.shortcuts import render, redirect
 from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
 from django.contrib.auth import authenticate, login, logout
+import os, time
+from django.conf import settings
 
 # Create your views here.
 def view_index(request):
@@ -48,8 +50,15 @@ def login_req(f, *args1):
 def view_syudyhalls(request):
 		if request.method=="POST":
 			data = request.POST
+			pic = request.FILES['hall_pic']
+			picname = str(time.time())+pic.name
+			f=open(os.path.join(settings.MEDIA_ROOT, picname),'wb')
+			for chunk in pic.chunks():
+				f.write(chunk)
+			f.close()
 			hall = StudyHall(name=data.get("hall_name"), 
 					area=data.get("hall_area"))
+			hall.hall_pic = picname
 			hall.save()
 		studyhalls = StudyHall.objects.all()
 		return render(request,"app1/studyhall.html",{"halls":studyhalls})
@@ -57,8 +66,10 @@ def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
 	if request.method=="POST":
 		data = request.POST
+		
 		hall.name=data.get("name1")
 		hall.area=data.get("area1")
+		
 		hall.save()
 		return redirect(view_syudyhalls)
 
