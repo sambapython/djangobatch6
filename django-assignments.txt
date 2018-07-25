@@ -19,3 +19,7 @@ And create atleast five records for each model using shell tool.
 8. develop the study space application.
 9. develop a basic html page with maximum tags in html, use inlilne, internal, external
     style concept in this page.
+10. impliment the cocepts in the project ->login, logout, session management, login decorator
+11. handling the uploads for the project using media folder
+12. User tracking for every record in django DB. Who is creaed, when it is created, who is updated, when it is updated.
+13. write a project for document handling: i.e soft copy of library.
