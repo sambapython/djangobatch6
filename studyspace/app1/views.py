@@ -5,9 +5,14 @@ from django.shortcuts import render, redirect
 from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
 from django.contrib.auth import authenticate, login, logout
+<<<<<<< HEAD
 import os
 from django.conf import settings
 import time
+=======
+import os, time
+from django.conf import settings
+>>>>>>> 96dfa911b0edd695e73476f0e1b50d6b600f1d9e
 
 # Create your views here.
 def view_index(request):
@@ -73,8 +78,10 @@ def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
 	if request.method=="POST":
 		data = request.POST
+		
 		hall.name=data.get("name1")
 		hall.area=data.get("area1")
+		
 		hall.save()
 		return redirect(view_syudyhalls)
 

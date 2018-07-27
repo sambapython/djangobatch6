@@ -23,6 +23,7 @@ And create atleast five records for each model using shell tool.
 11. handling the uploads for the project using media folder
 12. User tracking for every record in django DB. Who is creaed, when it is created, who is updated, when it is updated.
 13. write a project for document handling: i.e soft copy of library.
+
 14. Write a model which tracks the row baseed on the login user: i.e every row shoul update with the four fields.
 	1. created_by
 	2. updated_by
