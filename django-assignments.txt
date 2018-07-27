@@ -19,3 +19,27 @@ And create atleast five records for each model using shell tool.
 8. develop the study space application.
 9. develop a basic html page with maximum tags in html, use inlilne, internal, external
     style concept in this page.
+10. impliment the cocepts in the project ->login, logout, session management, login decorator
+11. handling the uploads for the project using media folder
+12. User tracking for every record in django DB. Who is creaed, when it is created, who is updated, when it is updated.
+13. write a project for document handling: i.e soft copy of library.
+14. Write a model which tracks the row baseed on the login user: i.e every row shoul update with the four fields.
+	1. created_by
+	2. updated_by
+	3.created_date
+	4. updated_date
+	5. deleted_by
+	Note: if the user sends the delete request. should not delte the record from data
+		base. follow one status field. incorporate this status fuctionality in entire 
+   		record processing.
+	TRY THIS: To accomplish the above job, you may write the code in views. Instead of
+		handling this features in views, try from model or use any other concept
+		in django.
+15. If you provide an authenticaion from other autentication management systems
+(google, facebook)Filter the records of the webapp based on the roles. if the role== manager. He should be
+in the position to do all operations. If he is a normal user he should be in the position to modify 
+his records only,but have an option to see all records.
+16. The chanllenge in the above assignment is you got user from other authentication 
+      management(google, facebook)(i.e SSO single sign on). Should be in the position to '
+     listout the records,but he should not have update or delete operations permissions.
+

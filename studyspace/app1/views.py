@@ -5,6 +5,9 @@ from django.shortcuts import render, redirect
 from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
 from django.contrib.auth import authenticate, login, logout
+import os
+from django.conf import settings
+import time
 
 # Create your views here.
 def view_index(request):
@@ -46,12 +49,25 @@ def login_req(f, *args1):
 
 @login_req
 def view_syudyhalls(request):
+		user_profile = UserProfile.objects.get(user_ptr=request.user)
 		if request.method=="POST":
 			data = request.POST
-			hall = StudyHall(name=data.get("hall_name"), 
-					area=data.get("hall_area"))
+			pic = request.FILES.get("hall_pic")
+			name=str(time.time())+pic.name
+			path = os.path.join(settings.MEDIA_ROOT,name)
+			f=open(path,"wb")
+			for chunk in pic.chunks():
+				f.write(chunk)
+			f.close()
+			hall = StudyHall(
+					name=data.get("hall_name"), 
+					area=data.get("hall_area"),
+					pic=name,
+					created_by=user_profile)
 			hall.save()
-		studyhalls = StudyHall.objects.all()
+		#studyhalls = StudyHall.objects.filter(created_by=user_profile,
+		#	status=True)
+		studyhalls = StudyHall.objects.filter(status=True)
 		return render(request,"app1/studyhall.html",{"halls":studyhalls})
 def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
@@ -67,7 +83,9 @@ def view_hall_update(request,pk):
 def view_hall_delete(request, hall_id):
 	hall_info = StudyHall.objects.get(pk=hall_id)
 	if request.method=="POST":
-		hall_info.delete()
+		#hall_info.delete()
+		hall_info.status=False
+		hall_info.save()
 		return redirect(view_syudyhalls)
 	return render(request,"app1/hall_delete.html",{"hall":hall_info})
 def view_reports(request):
