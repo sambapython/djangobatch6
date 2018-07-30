@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from api.views import StudyHallView
+from api.views import StudyHallView, StudyHallDetailView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^studyhall/', StudyHallView.as_view()),
+    url(r'^studyhall/$', StudyHallView.as_view()),
+    url(r'^studyhall/([0-9]+)/$', StudyHallDetailView.as_view()),
 ]
