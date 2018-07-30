@@ -7,6 +7,11 @@ import json
 
 from django.shortcuts import render
 from api.models import StudyHall
+def validate_name(name):
+	if isinstance(name,str):
+		return name.isalpha()
+	else:
+		return False
 
 # Create your views here.
 class StudyHallView(APIView):
@@ -14,6 +19,9 @@ class StudyHallView(APIView):
 		try:
 			data = request.data
 			if "name" in data and "area" in data:
+				if not validate_name(data.get("name")):
+					return Response("Validation error",
+						status=status.HTTP_406_NOT_ACCEPTABLE)
 				sh = StudyHall(**request.data)
 				sh.save()
 				return Response("study hall created successfully!!")
@@ -34,6 +42,9 @@ class StudyHallDetailView(APIView):
 
 		try:
 			if "name" in data or "area" in data:
+				if not validate_name(data.get("name")):
+					return Response("Validation error",
+						status=status.HTTP_406_NOT_ACCEPTABLE)
 				hall = StudyHall.objects.get(pk=pk)
 				data = request.data
 				hall.name=data.get("name", hall.name)
