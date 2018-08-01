@@ -40,7 +40,7 @@ class StudyHall(NameModel):
 
 class Expenses(NameModel):
 	studyhall = models.ForeignKey(StudyHall)
-	date = models.DateTimeField()
+	date = models.DateTimeField(auto_now_add=True)
 	#name=models.CharField(max_length=250)
 	desc = models.TextField(max_length=250)
 	value= models.IntegerField()

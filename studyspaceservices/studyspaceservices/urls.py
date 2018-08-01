@@ -15,10 +15,13 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from api.views import StudyHallView, StudyHallDetailView
+from api.views import StudyHallView, StudyHallDetailView,\
+ExpensesView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^studyhall/$', StudyHallView.as_view()),
     url(r'^studyhall/([0-9]+)/$', StudyHallDetailView.as_view()),
+    #url(r'^expense/([0-9]+)/$', ExpensesView.as_view()),
+    url(r'^expense/$', ExpensesView.as_view()),
 ]

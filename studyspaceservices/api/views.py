@@ -3,17 +3,46 @@ from __future__ import unicode_literals
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+
 import json
 
 from django.shortcuts import render
-from api.models import StudyHall
+from api.models import StudyHall, Expenses
+from serializers import ExpSerializer, ExpSerializerGet
+class ExpensesView(APIView):
+	def get(self, request):
+		data = Expenses.objects.all()
+		expser = ExpSerializerGet(data, many=True)
+		return Response(expser.data)
+	def post(self, request):
+		try:		
+			exp_ser = ExpSerializer(data=request.data)
+			if exp_ser.is_valid():
+				exp_ser.save()
+				return Response("Expense created successfully")
+			else:
+				return Response(exp_ser._errors,
+					status=status.HTTP_400_BAD_REQUEST)
+		except Exception as err:
+			return Response(err.message,
+				status=status.HTTP_500_INTERNAL_SERVER_ERROR)
+	# def post(self, request):
+	# 	try:
+
+	# 		hall = StudyHall.objects.get(pk=request.data.get("studyhall"))
+	# 		request.data.update({"studyhall":hall})
+	# 		exp = Expenses(**request.data)
+	# 		exp.save()
+	# 		return Response("Expense created successfully")
+	# 	except Exception as err:
+	# 		return Response(err.message,
+	# 			status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 def validate_name(name):
 	if isinstance(name,str):
 		return name.isalpha()
 	else:
 		return False
 
-# Create your views here.
 class StudyHallView(APIView):
 	def post(self, request):
 		try:
