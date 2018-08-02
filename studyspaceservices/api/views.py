@@ -9,7 +9,11 @@ import json
 from django.shortcuts import render
 from api.models import StudyHall, Expenses
 from serializers import ExpSerializer, ExpSerializerGet
+from rest_framework import permissions
+
 class ExpensesView(APIView):
+	#permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
+	#permission_classes = (permissions.IsAuthenticatedOrReadOnly,)
 	def get(self, request):
 		data = Expenses.objects.all()
 		expser = ExpSerializerGet(data, many=True)

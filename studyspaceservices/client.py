@@ -10,11 +10,11 @@ resp = requests.post(expense_url,
 					#"date":"2017-08-01",
 					"desc":"createin expense",
 					"value":300,
-					"name":"hall1_expense127"
-					})
+					"name":"halls10"
+					}, headers={"Authorization": "Token 4975b5dc7da43dae864d0ebe7d96f2cb771558cb"})
 print resp.status_code
 print resp.text
-resp = requests.get(expense_url)
+resp = requests.get(expense_url,headers={"Authorization": "Token 4975b5dc7da43dae864d0ebe7d96f2cb771558cb"})
 print resp.status_code
 print resp.text
 # print study_hall_url
