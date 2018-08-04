@@ -19,13 +19,19 @@ class StudyHallSerializer(serializers.ModelSerializer):
 			"area should contains only alpha nummeric")
 
 class ExpSerializer(serializers.ModelSerializer):
-	# def validate_studyhall(self, hall):
+
+	def validate_studyhall(self, value):
 		
-	# 	try:
-	# 		hall = StudyHall.objects.get(pk=hall.id)
-	# 		return self.data
-	# 	except Exception as err:
-	# 		return self._errors
+		try:
+			hall = StudyHall.objects.get(pk=value.id)
+			return value
+		except Exception as err:
+			return serializers.ValidationError("studyhall not found")
+	def validate_name(self, value):
+		if not value.isalpha():
+			return serializers.ValidationError("name should be alpha numeric")
+		return value
+
 
 
 	class Meta:
