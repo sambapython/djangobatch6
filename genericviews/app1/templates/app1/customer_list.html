@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<a href="/createcustomer/">NEW CUSTOMER</a>
+<table border="2">
+	<tr>
+		<th>NAME</th>
+		<th>id</th>
+		<th>UPDATE</th>
+		<th>DELETE</th>
+	</tr>
+	{% for cust in object_list %}
+	<tr>
+		<td>{{cust.name}}</td>
+		<td>{{cust.id}}</td>
+		<td><a href="/updatecustomer/{{ cust.id }}">UPDATE</a></td>
+		<td><a href="/deletecustomer/{{ cust.id }}">DELETE</a></td>
+
+
+	</tr>
+	{% endfor %}
+</table>
+</body>
+</html>
