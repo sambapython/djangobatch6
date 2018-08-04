@@ -5,14 +5,25 @@ from django.shortcuts import render, redirect
 from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
 from django.contrib.auth import authenticate, login, logout
-<<<<<<< HEAD
+
 import os
 from django.conf import settings
 import time
-=======
-import os, time
-from django.conf import settings
->>>>>>> 96dfa911b0edd695e73476f0e1b50d6b600f1d9e
+
+from app1.forms import ExpensesForm
+
+def ExpensesView(request):
+	if request.method=="POST":
+		form = ExpensesForm(request.POST)
+		if form.is_valid():
+			form.save()
+		
+	form = ExpensesForm()
+
+	return render(request,"app1/expenses.html",
+		{"form":form,"data":Expenses.objects.all()})
+
+
 
 # Create your views here.
 def view_index(request):

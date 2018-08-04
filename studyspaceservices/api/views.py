@@ -3,13 +3,17 @@ from __future__ import unicode_literals
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-
+from rest_framework import permissions
 import json
+from rest_framework.decorators import authentication_classes,\
+permission_classes
 
 from django.shortcuts import render
 from api.models import StudyHall, Expenses
-from serializers import ExpSerializer, ExpSerializerGet
+from serializers import ExpSerializer, ExpSerializerGet,\
+StudyHallSerializer
 class ExpensesView(APIView):
+	#permission_classes = (permissions.IsAuthenticated,)
 	def get(self, request):
 		data = Expenses.objects.all()
 		expser = ExpSerializerGet(data, many=True)
@@ -42,23 +46,35 @@ def validate_name(name):
 		return name.isalpha()
 	else:
 		return False
-
+@authentication_classes([])
+@permission_classes([])
 class StudyHallView(APIView):
+	# def post(self, request):
+	# 	try:
+	# 		data = request.data
+	# 		#sh = StudyHall(**request.data)
+	# 		#sh.save()
+	# 		studyhallser = StudyHallSerializer(data=data)
+	# 		if studyhallser.is_valid():
+	# 			studyhallser.save()
+	# 		else:
+	# 			return Response(studyhallser._errors)
+	# 		return Response("study hall created successfully!!")
+	# 	except Exception as err:
+	# 		return Response(err.message, 
+	# 			status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 	def post(self, request):
 		try:
 			data = request.data
-			if "name" in data and "area" in data:
-				if not validate_name(data.get("name")):
-					return Response("Validation error",
-						status=status.HTTP_406_NOT_ACCEPTABLE)
-				sh = StudyHall(**request.data)
-				sh.save()
-				return Response("study hall created successfully!!")
+			studyhallser = StudyHallSerializer(data=data)
+			if studyhallser.is_valid():
+				studyhallser.save()
+				return Response("studyhall created successfully")
 			else:
-				return Response("name, area params are required",
+				return Response(studyhallser._errors,
 					status=status.HTTP_400_BAD_REQUEST)
 		except Exception as err:
-			return Response(err.message, 
+			return Response(err.message,
 				status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 	def get(self, request):
 		halls=StudyHall.objects.all()

@@ -1,0 +1,46 @@
+{% extends "app1/base.html"%}
+{% block pageheader %}
+Expenses
+{% endblock %}
+{% block content%}
+
+      <p>this page showing Expenses</p>
+      <!-- <p>{{halls}}</p> -->
+      <div class="row">
+        <form class="form-horizontal" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form.as_p}}
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <input type="submit" class="btn btn-default" value="create expenses">
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="table-responsive">
+        <!-- <a href="">CREAT STUDYHALL</a> -->
+        <table id="studyhall" class="table table-striped table-bordered" style="width:100%">
+          <thead>
+            <tr><th>NAME</th><th>Syudyhall</th><th>date</th><th>created by</th><th>desc</th><th>value</th><th>update</th><th>delete</th></tr>
+          </thead>
+          <tbody>
+              {% for exp in data%}
+              <tr>
+                <td>{{ exp.name }}</td>
+                <td>{{ exp.studyhall.name }}</td>
+                <td>{{ exp.date }}</td>
+                <td>{{ exp.created_by }}</td>
+                <td>{{ exp.desc }}</td>
+                <td>{{ exp.value }}</td>
+                {% ifequal hall.created_by.username request.user.username%}
+                <td><a href="/hall_update/{{hall.id}}/">UPDATE</a></td>
+                <td><a href="/hall_delete/{{hall.id}}/">DELETE</a></td>
+                {% endifequal %}
+
+              </tr>
+             <!--  <p>{{ hall.name }},{{hall.area}}</p> -->
+              {% endfor %}
+          </tbody>
+      </table>
+{% endblock %}

@@ -71,6 +71,11 @@ class Enquiry(NameModel):
 	student = models.ForeignKey(Student)
 	def __str__(self):
 		return "%s,%s,%s"%(self.name,self.student,self.course)
+class RequestTracker(models.Model):
+	ip = models.CharField(max_length=250)
+	path = models.CharField(max_length=2000)
+	status = models.IntegerField(blank=True, null=True)
+
 
 
 

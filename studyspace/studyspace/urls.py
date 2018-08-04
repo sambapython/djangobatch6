@@ -17,14 +17,17 @@ from django.conf.urls import url
 from django.contrib import admin
 from django.conf.urls.static import static
 from app1.views import view_index, view_syudyhalls, view_hall_update,\
-view_hall_delete, view_reports, view_logout, view_forgotpassword
+view_hall_delete, view_reports, view_logout, view_forgotpassword, \
+ExpensesView
 from django.conf import settings
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^index/', view_index),
+    #url(r'^index/', view_index),
     url(r'^studyhalls/', view_syudyhalls),
+    url(r'^expenses/', ExpensesView),
+    url(r'^enquiry/', ExpensesView),
     url(r'^hall_update/([0-9]+)/', view_hall_update),
     url(r'^hall_delete/([0-9]+)/', view_hall_delete),
     url(r'^reports/', view_reports),
