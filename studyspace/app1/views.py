@@ -5,6 +5,7 @@ from django.shortcuts import render, redirect
 from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
 from django.contrib.auth import authenticate, login, logout
+from django.core.paginator import Paginator
 
 import os
 from django.conf import settings
@@ -66,25 +67,36 @@ def login_req(f, *args1):
 @login_req
 def view_syudyhalls(request):
 		user_profile = UserProfile.objects.get(user_ptr=request.user)
+		page_number=1
 		if request.method=="POST":
 			data = request.POST
-			pic = request.FILES.get("hall_pic")
-			name=str(time.time())+pic.name
-			path = os.path.join(settings.MEDIA_ROOT,name)
-			f=open(path,"wb")
-			for chunk in pic.chunks():
-				f.write(chunk)
-			f.close()
-			hall = StudyHall(
-					name=data.get("hall_name"), 
-					area=data.get("hall_area"),
-					pic=name,
-					created_by=user_profile)
-			hall.save()
+			if data.get("page"):
+				page_number = data.get("page_num",1)
+			else:
+				pic = request.FILES.get("hall_pic")
+				name=str(time.time())+pic.name
+				path = os.path.join(settings.MEDIA_ROOT,name)
+				f=open(path,"wb")
+				for chunk in pic.chunks():
+					f.write(chunk)
+				f.close()
+				hall = StudyHall(
+						name=data.get("hall_name"), 
+						area=data.get("hall_area"),
+						pic=name,
+						created_by=user_profile)
+				hall.save()
 		#studyhalls = StudyHall.objects.filter(created_by=user_profile,
 		#	status=True)
 		studyhalls = StudyHall.objects.filter(status=True)
-		return render(request,"app1/studyhall.html",{"halls":studyhalls})
+		pages = Paginator(studyhalls,10)
+		req_page = pages.page(page_number)
+		return render(request,
+			"app1/studyhall.html",
+			{"halls":req_page,
+			"pagesinfo":pages,
+			"page_number":page_number,
+			})
 def view_hall_update(request,pk):
 	hall = StudyHall.objects.get(pk=pk)
 	if request.method=="POST":

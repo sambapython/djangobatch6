@@ -24,7 +24,7 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    #url(r'^index/', view_index),
+    url(r'^index/', view_index),
     url(r'^studyhalls/', view_syudyhalls),
     url(r'^expenses/', ExpensesView),
     url(r'^enquiry/', ExpensesView),

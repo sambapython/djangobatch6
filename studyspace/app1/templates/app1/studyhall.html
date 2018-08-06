@@ -7,34 +7,64 @@ STUDY HALLS
       <p>this page showing study halls</p>
       <!-- <p>{{halls}}</p> -->
       <div class="row">
-        <form class="form-horizontal" method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="hall_name">Hall name:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="hall_name" placeholder="Enter hall name" name="hall_name">
+        <div class="col-sm-6">
+          <form class="form-horizontal" method="post">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="hall_name">PAGE:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="pahe_num" placeholder="Enter pagenumber" name="page_num">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="hall_area">Hall area:</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" id="hall_area" placeholder="Enter hall area" name="hall_area">
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" name= "page" class="btn btn-default" value="GET PAGE">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <label class="control-label col-sm-2" for="hall_pic">Hall pic:</label>
-            <div class="col-sm-10">
-              <input type="file" class="form-control" id="hall_pic"  name="hall_pic">
+            
+          </form>
+        </div>
+        <div class="col-sm-6">
+          <form class="form-horizontal" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="hall_name">Hall name:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="hall_name" placeholder="Enter hall name" name="hall_name">
+              </div>
             </div>
-          </div>
-          <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-              <input type="submit" name= "studyhall" class="btn btn-default" value="CREATE HALL">
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="hall_area">Hall area:</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="hall_area" placeholder="Enter hall area" name="hall_area">
+              </div>
             </div>
-          </div>
-        </form>
+            <div class="form-group">
+              <label class="control-label col-sm-2" for="hall_pic">Hall pic:</label>
+              <div class="col-sm-10">
+                <input type="file" class="form-control" id="hall_pic"  name="hall_pic">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <input type="submit" name= "studyhall" class="btn btn-default" value="CREATE HALL">
+              </div>
+            </div>
+          </form>
+        </div>
       </div>
-
+      <div class="row">
+        <div class="col-sm-4">
+          <p>#records: {{ pagesinfo.count }}</p>
+        </div>
+        <div class="col-sm-4">
+          <p>#pages: {{ pagesinfo.num_pages }}</p>
+        </div>
+        <div class="col-sm-4">
+          <p>Showing page: {{ page_number }}</p>
+        </div>
+        
+      </div>
       <div class="table-responsive">
         <!-- <a href="">CREAT STUDYHALL</a> -->
         <table id="studyhall" class="table table-striped table-bordered" style="width:100%">

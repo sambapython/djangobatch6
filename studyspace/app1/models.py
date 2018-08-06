@@ -33,7 +33,7 @@ class NameModel(models.Model):
 class StudyHall(NameModel):
 	#name = models.CharField(max_length=50)
 	area = models.TextField(max_length=250)
-	pic = models.ImageField()
+	pic = models.ImageField(blank=True, null=True)
 	def __str__(self):
 		return "%s|%s"%(self.name, self.area)
 
