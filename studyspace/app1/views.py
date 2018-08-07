@@ -12,6 +12,8 @@ from django.conf import settings
 import time
 
 from app1.forms import ExpensesForm
+import logging
+log = logging.getLogger(__name__)
 
 def ExpensesView(request):
 	if request.method=="POST":
@@ -28,32 +30,47 @@ def ExpensesView(request):
 
 # Create your views here.
 def view_index(request):
-
+	log.info("entering to index view")
 	if request.method=="POST":
-		data = request.POST
-
-		if data.get("reg"):
-			up = UserProfile.objects.create_user(
-				username=data.get("username"),
-				password=data.get("password"),
-				email = data.get("email")
-				)
-			return render(request,"app1/index.html",
-				{"msg":"USER created successfully!!. Please login"})
-		else:
-			user = authenticate(
-				username=data.get("username"),
-				password=data.get("password")
-				)
-			if user:
-				#request.session.update({"user":user.username})
-				login(request, user)
-				return render(request,"app1/home.html",
-					{"msg":"Login success"})
-			else:
+		try:
+			log.info("Registering started")
+			data = request.POST
+			log.debug(str(data))
+			if data.get("reg"):
+				up = UserProfile.objects.create_user(
+					username=data.get("username"),
+					password=data.get("password"),
+					email = data.get("email")
+					)
+				log.debug(str(up))
+				log.info("USER created successfully!!")
 				return render(request,"app1/index.html",
-					{"msg": "Login failed."})
-
+					{"msg":"USER created successfully!!. Please login"})
+		except Exception as err:
+			log.error(err.message)
+		else:
+			try:
+				log.info("Authenticating the user")
+				user = authenticate(
+					username=data.get("username"),
+					password=data.get("password")
+					)
+				if user:
+					#request.session.update({"user":user.username})
+					log.debug("setting session...")
+					login(request, user)
+					log.debug("session successfully set %s"%request.session)
+					log.info("Login successfully")
+					log.debug(user.username)
+					return render(request,"app1/home.html",
+						{"msg":"Login success"})
+				else:
+					log.warn("login failed")
+					return render(request,"app1/index.html",
+						{"msg": "Login failed."})
+			except Exception as err:
+				log.error(err.message)
+	
 	return render(request,"app1/index.html")
 
 def login_req(f, *args1):

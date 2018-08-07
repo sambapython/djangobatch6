@@ -79,6 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    },
+    'default1': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db1.sqlite3'),
     }
 }
 
@@ -122,3 +126,26 @@ USE_TZ = True
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+LOGGING ={
+            'version': 1,
+            'disable_existing_loggers':False,
+            'formatters':{
+                'simple':{
+                    'format':"%(asctime)s->%(levelname)s->%(message)s->%(name)s"
+                }
+            },
+            'handlers': {
+                'console': {
+                    #'class': 'logging.StreamHandler',
+                    'class': 'logging.FileHandler',
+                    'filename':'log.txt',
+                    'formatter': "simple",
+                    },
+                },
+            'loggers': {
+                'app1': {
+                'handlers': ['console'],
+
+                'level': "DEBUG"},
+                },
+        }
