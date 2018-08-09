@@ -4,6 +4,47 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 from datetime import datetime
+from django.conf import  settings
+# class MigrationModel(models.Model):
+# 	def save(self, *args, **kwargs):
+# 		for db in settings.DATABASES:
+# 			kwargs.update({"using":db})
+# 			if db=="default":
+# 				df = super(MigrationModel,self).save(*args, **kwargs)
+# 			else:
+# 				super(MigrationModel,self).save(*args, **kwargs)
+# 		return df
+class model1(models.Model):
+	name=models.CharField(max_length=250)
+	def save(self, *args, **kwargs):
+		for db in settings.DATABASES:
+			kwargs.update({"using":db})
+			if db=="default":
+				df = super(model1,self).save(*args, **kwargs)
+			else:
+				super(model1,self).save(*args, **kwargs)
+		return df
+class model2(models.Model):
+	name=models.CharField(max_length=250)
+	def save(self, *args, **kwargs):
+		for db in settings.DATABASES:
+			kwargs.update({"using":db})
+			if db=="default":
+				df = super(model2,self).save(*args, **kwargs)
+			else:
+				super(model2,self).save(*args, **kwargs)
+		return df
+	
+
+
+
+class Amazon(models.Model):
+	name=models.CharField(max_length=250)
+	database_name="default"
+class VmWare(models.Model):
+	name=models.CharField(max_length=250)
+	database_name="default1"
+
 class UserProfile(User):
 	# it will create table in database: app1_userprofile
 	# there is two columns role, user(onttoone relation with User model)
