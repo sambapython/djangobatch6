@@ -49,14 +49,22 @@ class UserProfile(User):
 	# it will create table in database: app1_userprofile
 	# there is two columns role, user(onttoone relation with User model)
 	roles = [("s","student"),("ss","studyspace")]
-	role = models.CharField(choices=roles, max_length=2)
+	up_name=models.CharField(max_length=250,default="")
+	role = models.CharField(choices=roles, max_length=2,default="s")
+	#user = models.OneToOneField(User)
+
+	def save(self, *args, **kwargs):
+		return UserProfile.objects.create(user_ptr=self.user_ptr,
+		 up_name=self.up_name)
+	def __str__(self):
+		return self.up_name
 
 
-class UserProfile(User):
-	# it will create table in database: app1_userprofile
-	# there is two columns role, user(onttoone relation with User model)
-	roles = [("s","student"),("ss","studyspace")]
-	role = models.CharField(choices=roles, max_length=2)
+# class UserProfile(User):
+# 	# it will create table in database: app1_userprofile
+# 	# there is two columns role, user(onttoone relation with User model)
+# 	roles = [("s","student"),("ss","studyspace")]
+# 	role = models.CharField(choices=roles, max_length=2)
 
 class NameModel(models.Model):
 	# abstract model

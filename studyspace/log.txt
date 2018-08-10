@@ -13,3 +13,30 @@
 2018-08-07 09:49:33,710->DEBUG-><QueryDict: {u'username': [u'user60'], u'csrfmiddlewaretoken': [u'y2JYjBO2fay4fa2F1nLi9mVmcfsPuK04B1diRyaznMDT2fFcICVb6oScBYocemoX'], u'password': [u'user60'], u'email': [u'user60@gmail.com'], u'reg': [u'REGISTER']}>->app1.views
 2018-08-07 09:49:33,838->DEBUG->user60->app1.views
 2018-08-07 09:49:33,838->INFO->USER created successfully!!->app1.views
+2018-08-10 09:14:21,522->INFO->entering to index view->app1.views
+2018-08-10 09:14:27,759->INFO->entering to index view->app1.views
+2018-08-10 09:14:34,066->INFO->entering to index view->app1.views
+2018-08-10 09:14:44,144->INFO->entering to index view->app1.views
+2018-08-10 09:32:33,450->INFO->entering to index view->app1.views
+2018-08-10 09:32:40,845->INFO->entering to index view->app1.views
+2018-08-10 09:32:40,845->INFO->Registering started->app1.views
+2018-08-10 09:32:40,845->DEBUG-><QueryDict: {u'username': [u'user2'], u'csrfmiddlewaretoken': [u'tir0WZFtR9WMdG4dwK9Dx9RYP3L9ot1f8rdSY5jFFQUxgEwe8qbU0COvi6dYXNQ0'], u'password': [u'user2'], u'login': [u'LOGIN']}>->app1.views
+2018-08-10 09:32:40,846->INFO->Authenticating the user->app1.views
+2018-08-10 09:32:40,885->WARNING->login failed->app1.views
+2018-08-10 09:32:48,181->INFO->entering to index view->app1.views
+2018-08-10 09:32:48,181->INFO->Registering started->app1.views
+2018-08-10 09:32:48,181->DEBUG-><QueryDict: {u'username': [u'user2'], u'csrfmiddlewaretoken': [u'SrDQsJTw1GwfMsadNIVPg2Qzt6G4PJezxApIuPxIPnu0PqCepoX6JvN6W98To33k'], u'password': [u'user2password'], u'login': [u'LOGIN']}>->app1.views
+2018-08-10 09:32:48,181->INFO->Authenticating the user->app1.views
+2018-08-10 09:32:48,230->DEBUG->setting session...->app1.views
+2018-08-10 09:32:48,397->DEBUG->session successfully set <django.contrib.sessions.backends.db.SessionStore object at 0x0000000004836550>->app1.views
+2018-08-10 09:32:48,397->INFO->Login successfully->app1.views
+2018-08-10 09:32:48,397->DEBUG->user2->app1.views
+2018-08-10 09:33:52,746->INFO->entering to index view->app1.views
+2018-08-10 09:33:59,576->INFO->entering to index view->app1.views
+2018-08-10 09:33:59,576->INFO->Registering started->app1.views
+2018-08-10 09:33:59,576->DEBUG-><QueryDict: {u'username': [u'user3'], u'csrfmiddlewaretoken': [u'iBy0WzVJ3hY4v8f8wFqjDFhvJLqbYTMfvbeRWtJHjsWFtr1xwqj8UJusB1GDOfHg'], u'password': [u'user3password'], u'login': [u'LOGIN']}>->app1.views
+2018-08-10 09:33:59,576->INFO->Authenticating the user->app1.views
+2018-08-10 09:33:59,618->DEBUG->setting session...->app1.views
+2018-08-10 09:33:59,783->DEBUG->session successfully set <django.contrib.sessions.backends.db.SessionStore object at 0x0000000004AF0630>->app1.views
+2018-08-10 09:33:59,783->INFO->Login successfully->app1.views
+2018-08-10 09:33:59,783->DEBUG->user3->app1.views
