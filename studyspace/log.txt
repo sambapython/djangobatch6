@@ -40,3 +40,52 @@
 2018-08-10 09:33:59,783->DEBUG->session successfully set <django.contrib.sessions.backends.db.SessionStore object at 0x0000000004AF0630>->app1.views
 2018-08-10 09:33:59,783->INFO->Login successfully->app1.views
 2018-08-10 09:33:59,783->DEBUG->user3->app1.views
+2018-08-11 10:05:53,697->INFO->entering to index view->app1.views
+2018-08-13 09:23:45,832->INFO->entering to index view->app1.views
+2018-08-13 09:29:24,753->INFO->entering to index view->app1.views
+2018-08-13 09:29:34,154->INFO->entering to index view->app1.views
+2018-08-13 09:32:31,305->INFO->entering to index view->app1.views
+2018-08-13 09:34:51,186->INFO->entering to index view->app1.views
+2018-08-13 09:43:06,614->INFO->entering to index view->app1.views
+2018-08-13 09:43:43,391->INFO->entering to index view->app1.views
+2018-08-13 09:45:54,151->INFO->entering to index view->app1.views
+2018-08-13 09:46:55,588->INFO->entering to index view->app1.views
+2018-08-13 09:47:32,964->INFO->entering to index view->app1.views
+2018-08-13 09:48:56,125->INFO->entering to index view->app1.views
+2018-08-13 09:49:30,842->INFO->entering to index view->app1.views
+2018-08-13 09:51:01,348->INFO->entering to index view->app1.views
+2018-08-13 09:52:47,489->INFO->entering to index view->app1.views
+2018-08-13 09:53:02,532->INFO->entering to index view->app1.views
+2018-08-13 09:53:34,657->INFO->entering to index view->app1.views
+2018-08-13 09:53:46,038->INFO->entering to index view->app1.views
+2018-08-13 09:53:54,227->INFO->entering to index view->app1.views
+2018-08-13 09:58:45,395->INFO->entering to index view->app1.views
+2018-08-13 10:00:23,757->INFO->entering to index view->app1.views
+2018-08-13 10:00:31,329->INFO->entering to index view->app1.views
+2018-08-13 10:02:18,989->INFO->entering to index view->app1.views
+2018-08-13 10:02:19,796->INFO->entering to index view->app1.views
+2018-08-13 10:03:03,351->INFO->entering to index view->app1.views
+2018-08-13 10:04:25,697->INFO->entering to index view->app1.views
+2018-08-13 10:05:29,009->INFO->entering to index view->app1.views
+2018-08-13 10:06:47,770->INFO->entering to index view->app1.views
+2018-08-13 10:07:19,348->INFO->entering to index view->app1.views
+2018-08-13 10:07:37,980->INFO->entering to index view->app1.views
+2018-08-13 10:09:11,607->INFO->entering to index view->app1.views
+2018-08-13 10:09:42,588->INFO->entering to index view->app1.views
+2018-08-13 10:10:20,292->INFO->entering to index view->app1.views
+2018-08-13 10:10:20,293->INFO->Registering started->app1.views
+2018-08-13 10:10:20,293->DEBUG-><QueryDict: {u'username': [u'user1'], u'csrfmiddlewaretoken': [u'bwcbHKPyrRTqg9op64uxcYrF8fDBji1y7HNw22WA4sIjE5evnv2AiPgrTlCUpz1K'], u'password': [u'user1password'], u'login': [u'LOGIN']}>->app1.views
+2018-08-13 10:10:20,293->INFO->Authenticating the user->app1.views
+2018-08-13 10:10:20,361->WARNING->login failed->app1.views
+2018-08-13 10:10:21,256->INFO->entering to index view->app1.views
+2018-08-13 10:10:28,243->INFO->entering to index view->app1.views
+2018-08-13 10:10:28,243->INFO->Registering started->app1.views
+2018-08-13 10:10:28,243->DEBUG-><QueryDict: {u'username': [u'samba'], u'csrfmiddlewaretoken': [u'iuRiqbhqtFmiUCyExkAX10obXs599zoFeFsDLtos6gbbiyoKOL807RdXIy4sfQoR'], u'password': [u'samba1234'], u'login': [u'LOGIN']}>->app1.views
+2018-08-13 10:10:28,243->INFO->Authenticating the user->app1.views
+2018-08-13 10:10:28,289->DEBUG->setting session...->app1.views
+2018-08-13 10:10:28,559->DEBUG->session successfully set <django.contrib.sessions.backends.db.SessionStore object at 0x00000000050D23C8>->app1.views
+2018-08-13 10:10:28,559->INFO->Login successfully->app1.views
+2018-08-13 10:10:28,559->DEBUG->samba->app1.views
+2018-08-13 10:15:18,592->INFO->entering to index view->app1.views
+2018-08-13 10:15:36,588->INFO->entering to index view->app1.views
+2018-08-13 10:16:16,536->INFO->entering to index view->app1.views

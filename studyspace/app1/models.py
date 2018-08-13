@@ -53,9 +53,22 @@ class UserProfile(User):
 	role = models.CharField(choices=roles, max_length=2,default="s")
 	#user = models.OneToOneField(User)
 
-	def save(self, *args, **kwargs):
-		return UserProfile.objects.create(user_ptr=self.user_ptr,
-		 up_name=self.up_name)
+	# def save(self, *args, **kwargs):
+	# 	return UserProfile.objects.create(user_ptr=self.user_ptr,
+	# 	 up_name=self.up_name)
+	def __str__(self):
+		return self.up_name
+class UserProfile1(models.Model):
+	# it will create table in database: app1_userprofile
+	# there is two columns role, user(onttoone relation with User model)
+	roles = [("s","student"),("ss","studyspace")]
+	up_name=models.CharField(max_length=250,default="")
+	role = models.CharField(choices=roles, max_length=2,default="s")
+	user = models.OneToOneField(User)
+
+	# def save(self, *args, **kwargs):
+	# 	return UserProfile.objects.create(user_ptr=self.user_ptr,
+	# 	 up_name=self.up_name)
 	def __str__(self):
 		return self.up_name
 

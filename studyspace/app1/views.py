@@ -6,6 +6,9 @@ from app1.models import StudyHall, Expenses, Enquiry, Course, Student,\
  Expenses, UserProfile
 from django.contrib.auth import authenticate, login, logout
 from django.core.paginator import Paginator
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from django.http import HttpResponse
 
 import os
 from django.conf import settings
@@ -14,6 +17,13 @@ import time
 from app1.forms import ExpensesForm
 import logging
 log = logging.getLogger(__name__)
+class UserName(APIView):
+	def get(self, request):
+		user_name = request.GET.get("username")
+		if user_name.isalnum():
+			return HttpResponse("true")
+		else:
+			return HttpResponse("false")
 
 def ExpensesView(request):
 	if request.method=="POST":

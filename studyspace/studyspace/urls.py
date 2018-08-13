@@ -18,7 +18,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 from app1.views import view_index, view_syudyhalls, view_hall_update,\
 view_hall_delete, view_reports, view_logout, view_forgotpassword, \
-ExpensesView
+ExpensesView, UserName
 from django.conf import settings
 
 
@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'^reports/', view_reports),
     url(r'^logout/', view_logout),
     url(r'^forgotpassword/', view_forgotpassword),
+    url(r'^check_username/', UserName.as_view()),
 ]+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
