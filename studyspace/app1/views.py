@@ -36,10 +36,9 @@ def ExpensesView(request):
 	return render(request,"app1/expenses.html",
 		{"form":form,"data":Expenses.objects.all()})
 
-
-
 # Create your views here.
 def view_index(request):
+	print 1/0
 	log.info("entering to index view")
 	if request.method=="POST":
 		try:

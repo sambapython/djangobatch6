@@ -1,4 +1,5 @@
 from .models import RequestTracker
+from django.shortcuts import render
 class RequestTrackerMiddleware:
 	def __init__(self, viewfun):
 		self.view_fun = viewfun
@@ -12,6 +13,10 @@ class RequestTrackerMiddleware:
 		rt.save()
 		resp = self.view_fun(request) # processing
 		rt.status = resp.status_code
+		if resp.status_code == 404:
+			return render(request,"app1/404.html")
+		if resp.status_code == 500:
+			return render(request,"app1/500.html")
 		rt.save()
 		#update response for the table
 		# updated value also for studayhall_get

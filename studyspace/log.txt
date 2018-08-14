@@ -89,3 +89,57 @@
 2018-08-13 10:15:18,592->INFO->entering to index view->app1.views
 2018-08-13 10:15:36,588->INFO->entering to index view->app1.views
 2018-08-13 10:16:16,536->INFO->entering to index view->app1.views
+2018-08-14 09:23:08,328->INFO->entering to index view->app1.views
+2018-08-14 09:23:22,108->INFO->entering to index view->app1.views
+2018-08-14 09:23:22,108->INFO->Registering started->app1.views
+2018-08-14 09:23:22,109->DEBUG-><QueryDict: {u'username': [u'samba'], u'csrfmiddlewaretoken': [u'8WOVh3JsqgMIaE2Vak0LLE7w3RmgsGqBp4rT4VIk1w4VjJuhAzR4MytCwwwhucXJ'], u'password': [u'samba1234'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:23:22,109->INFO->Authenticating the user->app1.views
+2018-08-14 09:23:22,190->DEBUG->setting session...->app1.views
+2018-08-14 09:23:22,375->ERROR->UNIQUE constraint failed: app1_userprofile1.user_id->app1.views
+2018-08-14 09:24:04,592->INFO->entering to index view->app1.views
+2018-08-14 09:24:04,592->INFO->Registering started->app1.views
+2018-08-14 09:24:04,592->DEBUG-><QueryDict: {u'username': [u'samba1'], u'csrfmiddlewaretoken': [u'Uih2gLnXV7Zar2mGUOG4fx660cFDSjIJna6iC6GjDSnR9iKX5piKB4qxi7U5xO78'], u'password': [u'samba1234'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:24:04,592->INFO->Authenticating the user->app1.views
+2018-08-14 09:24:04,641->DEBUG->setting session...->app1.views
+2018-08-14 09:24:04,828->ERROR->UNIQUE constraint failed: app1_userprofile1.user_id->app1.views
+2018-08-14 09:24:17,039->INFO->entering to index view->app1.views
+2018-08-14 09:24:17,039->INFO->Registering started->app1.views
+2018-08-14 09:24:17,039->DEBUG-><QueryDict: {u'username': [u'samba1'], u'csrfmiddlewaretoken': [u'0lF1p4S7jEtINmkgoraDQKG74G1plGm9Rcj21iQZfYPTDtx9ON8eFJzP8VM1IGV1'], u'password': [u'samba1234'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:24:17,039->INFO->Authenticating the user->app1.views
+2018-08-14 09:24:17,076->DEBUG->setting session...->app1.views
+2018-08-14 09:24:17,178->ERROR->UNIQUE constraint failed: app1_userprofile1.user_id->app1.views
+2018-08-14 09:24:54,049->INFO->entering to index view->app1.views
+2018-08-14 09:24:54,049->INFO->Registering started->app1.views
+2018-08-14 09:24:54,049->DEBUG-><QueryDict: {u'username': [u'jay1'], u'csrfmiddlewaretoken': [u'Vnzi16bFkj3YxzQnJudhSopeLJuK5Iel9SQDRTqaDJdGRugC4TEJmXaPO51R2VJv'], u'password': [u'jay1password'], u'email': [u'jay1@gmail.com'], u'reg': [u'REGISTER']}>->app1.views
+2018-08-14 09:24:54,184->DEBUG->->app1.views
+2018-08-14 09:24:54,184->INFO->USER created successfully!!->app1.views
+2018-08-14 09:25:12,252->INFO->entering to index view->app1.views
+2018-08-14 09:25:12,252->INFO->Registering started->app1.views
+2018-08-14 09:25:12,253->DEBUG-><QueryDict: {u'username': [u'jay1'], u'csrfmiddlewaretoken': [u'wxiN5B18nGDESI1O8RBAGgq5GX4159QWK2z8VogDG6NmcDr3tg22aPbGJjB82ml6'], u'password': [u'jay1password'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:25:12,253->INFO->Authenticating the user->app1.views
+2018-08-14 09:25:12,305->DEBUG->setting session...->app1.views
+2018-08-14 09:25:12,565->DEBUG->session successfully set <django.contrib.sessions.backends.db.SessionStore object at 0x000000000503B6A0>->app1.views
+2018-08-14 09:25:12,565->INFO->Login successfully->app1.views
+2018-08-14 09:25:12,565->DEBUG->jay1->app1.views
+2018-08-14 09:25:19,882->INFO->entering to index view->app1.views
+2018-08-14 09:25:27,792->INFO->entering to index view->app1.views
+2018-08-14 09:25:27,793->INFO->Registering started->app1.views
+2018-08-14 09:25:27,793->DEBUG-><QueryDict: {u'username': [u'samba1'], u'csrfmiddlewaretoken': [u'pIwK7MQmyiGsIHT8fGp3e7LcgofdvaGLO4Z0H0srnmHwHOR7MY0ouVivBm2xrEJ0'], u'password': [u'samba1234'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:25:27,795->INFO->Authenticating the user->app1.views
+2018-08-14 09:25:27,835->DEBUG->setting session...->app1.views
+2018-08-14 09:25:28,005->ERROR->UNIQUE constraint failed: app1_userprofile1.user_id->app1.views
+2018-08-14 09:26:03,630->INFO->entering to index view->app1.views
+2018-08-14 09:26:15,644->INFO->entering to index view->app1.views
+2018-08-14 09:26:15,644->INFO->Registering started->app1.views
+2018-08-14 09:26:15,644->DEBUG-><QueryDict: {u'username': [u'jay2'], u'csrfmiddlewaretoken': [u'jwyuF7FaPVRjFwXDxMj6K1xubB3TKWGHvRxsRz7iHmdft7sfN7U60XLGFEDTFGQu'], u'password': [u'jay2passworde'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:26:15,644->INFO->Authenticating the user->app1.views
+2018-08-14 09:26:15,686->WARNING->login failed->app1.views
+2018-08-14 09:26:24,553->INFO->entering to index view->app1.views
+2018-08-14 09:26:24,553->INFO->Registering started->app1.views
+2018-08-14 09:26:24,553->DEBUG-><QueryDict: {u'username': [u'jay2'], u'csrfmiddlewaretoken': [u'3aeJwFUW4hWDFXKjORRRkKKZDSLakOpKfvdHI7m4WIiztyfV4csRAGYb7Vlafyzx'], u'password': [u'jay2password'], u'login': [u'LOGIN']}>->app1.views
+2018-08-14 09:26:24,553->INFO->Authenticating the user->app1.views
+2018-08-14 09:26:24,599->DEBUG->setting session...->app1.views
+2018-08-14 09:26:24,766->ERROR->UNIQUE constraint failed: app1_userprofile1.user_id->app1.views
+2018-08-14 09:27:16,671->INFO->entering to index view->app1.views
+2018-08-14 09:32:03,539->INFO->entering to index view->app1.views
+2018-08-14 09:38:37,947->INFO->entering to index view->app1.views
